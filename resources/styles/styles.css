@@ -1,3 +1,10 @@
 li {
   width: 30%
 }
+.center-field {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.add-button {
+  float: right;
+}

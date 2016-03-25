@@ -3,16 +3,24 @@ import { EntryDisplayComponent } from './entry-display.component';
 import { Entry } from './entry.model';
 import { EditEntryDetailsComponent } from './edit-entry-details.component';
 import { NewEntryComponent } from './new-entry.component';
+import { LowPipe } from './low.pipe';
 
 
 //////////////////// entry-list < root  ///////////////////
 @Component({
   selector: 'entry-list',
+  pipes: [LowPipe],
   inputs: ['entryList'],
   outputs: ['onEntrySelect'],
   directives: [EntryDisplayComponent, EditEntryDetailsComponent, NewEntryComponent],
   template: `
-  <entry-display *ngFor="#currentEntry of entryList"
+  <select (change)="onChange($event.target.value)" class="filter">
+    <option value="low">Show Low Cal</option>
+    <option value="notLow">Show High Cal</option>
+    <option value="all" selected="selected">Show All</option>
+  </select>
+  <br><br><br>
+  <entry-display *ngFor="#currentEntry of entryList | low:filterLow"
     (click)="entryClicked(currentEntry)"
     [class.selected]="currentEntry === selectedEntry"
     [entry]="currentEntry">
@@ -22,6 +30,7 @@ import { NewEntryComponent } from './new-entry.component';
   `
 })
 export class EntryListComponent {
+  public filterLow;
   public entryList: Entry[];
   public onEntrySelect: EventEmitter<Entry>;
   public selectedEntry: Entry;
@@ -33,9 +42,12 @@ export class EntryListComponent {
     this.selectedEntry = clickedEntry;
     this.onEntrySelect.emit(clickedEntry);
   }
-  createEntry(description: string, calories: number, protein: number): void {
-    this.entryList.push(
-      new Entry(description, calories, protein)
-    );
+  createEntry(entryArray): void {
+    var dummy = new Entry(entryArray[0], entryArray[1], entryArray[2]);
+    console.log(dummy);
+    this.entryList.push(dummy);
+  }
+  onChange(filterOption){
+    this.filterLow = filterOption;
   }
 }

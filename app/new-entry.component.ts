@@ -5,20 +5,36 @@ import {Entry} from './entry.model';
   selector: 'new-entry',
   outputs: ['onSubmitNewEntry'],
   template: `
-  <div class="entry-form">
-    <h3>Create Entry:</h3>
-    <input placeholder="Description" class="col-sm-8 input-lg" #newDescription>
-    <button (click)="addEntry(newDescription)" class="btn-success btn-lg add-button">Add</button>
-  </div>
+  <form class="form-inline text-center">
+    <div class="form-group">
+      <label class="sr-only" for="item-input"></label>
+      <input type="text" class="form-control" id="item-input" placeholder="New Item" #itemInput>
+    </div>
+    <div class="form-group center-field">
+      <label class="sr-only" for="calories-input"></label>
+      <input type="number" class="form-control" id="calories-input" placeholder="Calories (kcal)" #caloriesInput>
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="protein-input"></label>
+      <input type="number" class="form-control" id="protein-input" placeholder="Protein (g)" #proteinInput>
+    </div>
+    <button (click)="addEntry(itemInput, caloriesInput, proteinInput)" class="btn btn-primary add-button">Add</button>
+  </form>
   `
 })
 export class NewEntryComponent {
-  public onSubmitNewEntry: EventEmitter<String>;
+  public onSubmitNewEntry: EventEmitter<any[]>;
   constructor(){
     this.onSubmitNewEntry = new EventEmitter();
   }
-  addEntry(userDescription: HTMLInputElement){
-    this.onSubmitNewEntry.emit(userDescription.value);
-    userDescription.value="";
+  addEntry(itemInput: HTMLInputElement, caloriesInput: HTMLInputElement, proteinInput: HTMLInputElement){
+    var emitterArray = [];
+    emitterArray.push(itemInput.value);
+    emitterArray.push(parseInt(caloriesInput.value));
+    emitterArray.push(parseInt(proteinInput.value));
+    this.onSubmitNewEntry.emit(emitterArray);
+    itemInput.value=null;
+    caloriesInput.value=null;
+    proteinInput.value=null;
   }
 }

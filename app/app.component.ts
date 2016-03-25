@@ -14,8 +14,8 @@ import { Entry } from  './entry.model';
     <hr>
     <ul class='list-inline'>
       <li class='text-center'>Item</li>
-      <li class='text-center'>Calories</li>
-      <li class='text-center'>Protein</li>
+      <li class='text-center'>Calories (kcal)</li>
+      <li class='text-center'>Protein (g)</li>
     </ul>
     <hr>
 
@@ -26,4 +26,7 @@ import { Entry } from  './entry.model';
 
 export class AppComponent {
   public entries: Entry[];
+  constructor(){
+    this.entries = [];
+  }
 }
