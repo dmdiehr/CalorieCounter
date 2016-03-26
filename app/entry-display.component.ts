@@ -6,12 +6,12 @@ import { Entry } from './entry.model';
   selector: 'entry-display',
   inputs: ['entry'],
   template: `
+    <hr>
     <ul class='list-inline'>
       <li class='text-center'>{{ entry.item }}</li>
       <li class='text-center'>{{ entry.calories }}</li>
       <li class='text-center'>{{ entry.protein }}</li>
     </ul>
-    <hr>
   `
 })
 

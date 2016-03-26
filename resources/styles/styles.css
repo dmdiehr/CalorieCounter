@@ -8,3 +8,11 @@ li {
 .add-button {
   float: right;
 }
+
+.item-header {
+  font-size: 2.5em;
+  padding: 20px;
+}
+.selected {
+  color: #777;
+}

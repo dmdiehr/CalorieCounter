@@ -5,10 +5,17 @@ import {Entry} from './entry.model';
   selector: 'edit-entry-details',
   inputs: ['entry'],
   template: `
-    <div class="entry-form">
-      <h3>Edit Description: </h3>
-      <input [(ngModel)]="entry.description" class="col-sm-8 input-lg entry-form"/>
-    </div>
+    <form class="form-inline text-center">
+      <div class="form-group">
+        <input [(ngModel)]="entry.item" class="form-control">
+      </div>
+      <div class="form-group center-field">
+        <input [(ngModel)]="entry.calories" class="form-control" type="number">
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="entry.protein" class="form-control" type="number">
+      </div>
+    </form>
   `
 })
 export class EditEntryDetailsComponent {

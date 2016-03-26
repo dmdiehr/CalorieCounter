@@ -12,14 +12,8 @@ import { Entry } from  './entry.model';
   <div class="container">
     <h1 class='jumbotron text-center'>Calorie Counter</h1>
     <hr>
-    <ul class='list-inline'>
-      <li class='text-center'>Item</li>
-      <li class='text-center'>Calories (kcal)</li>
-      <li class='text-center'>Protein (g)</li>
-    </ul>
-    <hr>
-
     <entry-list [entryList]="entries"></entry-list>
+    <hr>
   </div>
   `
 })

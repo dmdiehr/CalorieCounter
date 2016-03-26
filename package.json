@@ -1,5 +1,5 @@
 {
-  "name": "tap-room",
+  "name": "calorie-counter",
   "version": "1.0.0",
   "scripts": {
     "start": "npm run tsc:w",
@@ -37,5 +37,13 @@
   },
   "main": "gulpfile.js",
   "author": "David Diehr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmdiehr/CalorieCounter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dmdiehr/CalorieCounter/issues"
+  },
+  "homepage": "https://github.com/dmdiehr/CalorieCounter#readme",
   "description": ""
 }
