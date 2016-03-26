@@ -16,3 +16,8 @@ button {
 .selected {
   color: #777;
 }
+.total-span {
+  font-weight: bold;
+  margin-left: -3%;
+  margin-right: -4%;
+}

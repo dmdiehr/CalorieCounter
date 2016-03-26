@@ -31,11 +31,13 @@ import { LowPipe } from './low.pipe';
     </entry-display>
     <edit-entry-details *ngIf="currentEntry===selectedEntry" [entry]="selectedEntry"  (onSubmitDeleteEntry)="removeEntry($event)"></edit-entry-details>
   </div>
-
-
-
-
-
+  <hr>
+  <ul class='list-inline text-center'>
+    <span class='total-span'>Totals:</span>
+    <li> {{ entryList.length }} Item(s) </li>
+    <li> {{ totalCalories() }} kcal</li>
+    <li> {{ totalProtein() }}g </li>
+  </ul>
   `
 })
 export class EntryListComponent {
@@ -66,5 +68,19 @@ export class EntryListComponent {
   }
   onChange(filterOption){
     this.filterLow = filterOption;
+  }
+  totalCalories(): number {
+    var returnValue = 0;
+    for(var entry of this.entryList) {
+      returnValue += entry.calories;
+    }
+    return returnValue;
+  }
+  totalProtein(): number {
+    var returnValue = 0;
+    for(var entry of this.entryList) {
+      returnValue += entry.protein;
+    }
+    return returnValue;
   }
 }

@@ -26,7 +26,6 @@ export class EditEntryDetailsComponent {
   constructor(){
     this.onSubmitDeleteEntry = new EventEmitter();
   }
-
   deleteEntry(entry: Entry){
     this.onSubmitDeleteEntry.emit(entry);
   }
