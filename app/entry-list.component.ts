@@ -29,7 +29,7 @@ import { LowPipe } from './low.pipe';
       [class.selected]="currentEntry === selectedEntry"
       [entry]="currentEntry">
     </entry-display>
-    <edit-entry-details *ngIf="currentEntry===selectedEntry" [entry]="selectedEntry"></edit-entry-details>
+    <edit-entry-details *ngIf="currentEntry===selectedEntry" [entry]="selectedEntry"  (onSubmitDeleteEntry)="removeEntry($event)"></edit-entry-details>
   </div>
 
 
@@ -59,6 +59,10 @@ export class EntryListComponent {
   createEntry(entryArray): void {
     var dummy = new Entry(entryArray[0], entryArray[1], entryArray[2]);
     this.entryList.push(dummy);
+  }
+  removeEntry(entry: Entry): void {
+    var entryIndex = this.entryList.indexOf(entry);
+    this.entryList.splice(entryIndex, 1);
   }
   onChange(filterOption){
     this.filterLow = filterOption;

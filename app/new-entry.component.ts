@@ -15,7 +15,7 @@ import {Entry} from './entry.model';
     <div class="form-group">
       <input type="number" class="form-control" id="protein-input" placeholder="Protein (g)" #proteinInput>
     </div>
-    <button (click)="addEntry(itemInput, caloriesInput, proteinInput)" class="btn btn-primary add-button">Add</button>
+    <button (click)="addEntry(itemInput, caloriesInput, proteinInput)" class="btn btn-primary">Add</button>
   </form>
   <hr>
   `

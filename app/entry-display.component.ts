@@ -7,10 +7,8 @@ import { Entry } from './entry.model';
   inputs: ['entry'],
   template: `
     <hr>
-    <ul class='list-inline'>
+    <ul class='list-inline text-center'>
       <li class='text-center'>{{ entry.item }}</li>
-      <li class='text-center'>{{ entry.calories }}</li>
-      <li class='text-center'>{{ entry.protein }}</li>
     </ul>
   `
 })
